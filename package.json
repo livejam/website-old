@@ -8,8 +8,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "gatsby": "^2.1.4"
-  }
+  "license": "ISC"
 }

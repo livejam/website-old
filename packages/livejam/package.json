@@ -4,7 +4,7 @@
   "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "dependencies": {
+  "devDependencies": {
     "gatsby": "^2.1.4",
     "gatsby-image": "^2.0.29",
     "gatsby-plugin-manifest": "^2.0.17",
@@ -16,7 +16,13 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
-    "react-helmet": "^5.2.0"
+    "react-helmet": "^5.2.0",
+    "@types/node": "^8.9.4",
+    "aws-cdk": "^0.24.1",
+    "typescript": "^3.1.2",
+    "@aws-cdk/aws-s3": "^0.24.1",
+    "@aws-cdk/aws-s3-deployment": "^0.24.1",
+    "@aws-cdk/cdk": "^0.24.1"
   },
   "keywords": [
     "gatsby"
@@ -27,7 +33,10 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+    "cdk:build": "tsc --build infrastructure",
+    "cdk:watch": "tsc -w",
+    "cdk:deploy": "cdk deploy"
   },
   "repository": {
     "type": "git",
