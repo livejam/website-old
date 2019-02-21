@@ -1,0 +1,25 @@
+{
+  "name": "ci-pipeline",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cdk:build": "tsc --build infrastructure",
+    "cdk:watch": "tsc -w",
+    "cdk:deploy": "npm run cdk:build && cdk deploy",
+    "cdk:diff": "cdk diff",
+    "cdk:destroy": "cdk destroy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@aws-cdk/aws-codebuild": "^0.24.1",
+    "@aws-cdk/aws-codepipeline": "^0.24.1",
+    "@aws-cdk/aws-iam": "^0.24.1",
+    "@aws-cdk/cdk": "^0.24.1",
+    "@types/node": "^11.9.4",
+    "aws-cdk": "^0.24.1",
+    "typescript": "^3.3.3"
+  }
+}
