@@ -30,7 +30,7 @@ export class LivejamPipeline extends cdk.Stack {
     // This should be reduced to the actual necessary permissions
     project.addToRolePolicy(
       new iam.PolicyStatement()
-        .addActions("cloudformation:*", "s3:*", "iam:*")
+        .addActions("cloudformation:*", "s3:*", "iam:*", "lambda:*")
         .addResource("*")
     );
   }
