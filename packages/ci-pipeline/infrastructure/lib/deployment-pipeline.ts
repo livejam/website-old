@@ -7,7 +7,6 @@ export class LivejamPipeline extends cdk.Stack {
   constructor(parent: cdk.App, name: string, props?: cdk.StackProps) {
     super(parent, name, props);
 
-    // Source
     const githubAccessToken = new cdk.SecretParameter(this, "GitHubToken", {
       ssmParameter: "/CDK/GitHubToken"
     });
