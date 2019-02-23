@@ -35,7 +35,7 @@
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
     "cdk:build": "tsc --build infrastructure",
-    "cdk:watch": "tsc -w",
+    "cdk:watch": "tsc --build infrastructure -w",
     "cdk:deploy": "cdk deploy"
   },
   "repository": {
