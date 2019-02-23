@@ -5,5 +5,7 @@ import { InfrastructureStack } from "../lib/infrastructure-stack";
 const app = new cdk.App();
 
 const branchName = app.node.getContext("branch_name");
-new InfrastructureStack(app, `InfrastructureStack-${branchName}`);
+new InfrastructureStack(app, `InfrastructureStack-${branchName}`, {
+  branchName
+});
 app.run();
