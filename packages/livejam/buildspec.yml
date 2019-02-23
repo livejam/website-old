@@ -10,6 +10,7 @@ phases:
       - yarn install
   build:
     commands:
+      - echo boom
       - yarn build
       - yarn cdk:build
       - yarn cdk:deploy
