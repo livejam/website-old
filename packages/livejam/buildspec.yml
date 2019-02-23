@@ -15,3 +15,7 @@ phases:
       - yarn build
       - yarn cdk:build
       - yarn cdk:deploy -- -c branch_name=$BRANCH_NAME
+
+cache:
+  paths:
+    - "packages/livejam/node_modules/**/*"
