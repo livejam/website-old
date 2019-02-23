@@ -26,6 +26,22 @@ export class LivejamPipeline extends cdk.Stack {
       }
     });
 
+    const projectResource = project.node.findChild(
+      "Resource"
+    ) as codebuild.CfnProject;
+
+    projectResource.addPropertyOverride("Triggers", {
+      Webhook: true,
+      FilterGroups: [
+        [
+          {
+            Pattern: "PULL_REQUEST_CREATED,PULL_REQUEST_UPDATED",
+            Type: "EVENT"
+          }
+        ]
+      ]
+    });
+
     // This should be reduced to the actual necessary permissions
     project.addToRolePolicy(
       new iam.PolicyStatement().addActions("*").addResource("*")
