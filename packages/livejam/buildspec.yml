@@ -14,7 +14,7 @@ phases:
       - echo branch $BRANCH_NAME
       - yarn build
       - yarn cdk:build
-      - yarn cdk:deploy -- -c branch_name=$BRANCH_NAME
+      - yarn cdk:deploy -- --require-approval never -c branch_name=$BRANCH_NAME
 
 cache:
   paths:
