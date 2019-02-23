@@ -14,4 +14,4 @@ phases:
       - echo branch $BRANCH_NAME
       - yarn build
       - yarn cdk:build
-      - yarn cdk:deploy
+      - yarn cdk:deploy -- -c branch_name=$BRANCH_NAME
