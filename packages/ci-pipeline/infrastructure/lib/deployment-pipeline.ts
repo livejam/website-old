@@ -37,7 +37,8 @@ export class LivejamPipeline extends cdk.Stack {
           {
             Pattern: "PULL_REQUEST_CREATED,PULL_REQUEST_UPDATED",
             Type: "EVENT"
-          }
+          },
+          { Pattern: "136789", Type: "ACTOR_ACCOUNT_ID" }
         ]
       ]
     });
