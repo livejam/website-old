@@ -43,6 +43,7 @@ export default class Distribution extends cdk.Construct {
           names: props.domainNames,
           acmCertRef: props.certificateArn // Needs to be created manually right now, but there's a PR to automate it https://github.com/awslabs/aws-cdk/pull/1797
         },
+        defaultRootObject: "index.html",
         viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.HTTPSOnly,
         originConfigs: [
           {
