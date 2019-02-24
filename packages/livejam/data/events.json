@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "title": "AWS CDK with GatsbyJS",
+    "description": "tbd",
+    "startsAt": "Tomorrow, 1 pm",
+    "link": "https://twitch.tv/skorfmann",
+    "users": [
+      {
+        "id": 1,
+        "name": "Mike"
+      },
+      {
+        "id": 2,
+        "name": "Sebastian"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "GraphQL Session",
+    "description": "tbd",
+    "startsAt": "Next week",
+    "link": "https://youtube.com/foobar",
+    "users": [
+      {
+        "id": 4,
+        "name": "Thomas"
+      },
+      {
+        "id": 3,
+        "name": "Fabian"
+      }
+    ]
+  }
+]
