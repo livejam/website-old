@@ -24,17 +24,6 @@ export default class Distribution extends cdk.Construct {
 
     this.bucket = bucket;
 
-    const originId = new cloudfront.CfnCloudFrontOriginAccessIdentity(
-      this,
-      `${props.name}OriginAccessIdentity`,
-      {
-        cloudFrontOriginAccessIdentityConfig: {
-          comment:
-            "A comment to associate with this CloudFront origin access identity"
-        }
-      }
-    );
-
     this.distribution = new cloudfront.CloudFrontWebDistribution(
       this,
       `${props.name}Distribution`,
@@ -43,13 +32,15 @@ export default class Distribution extends cdk.Construct {
           names: props.domainNames,
           acmCertRef: props.certificateArn // Needs to be created manually right now, but there's a PR to automate it https://github.com/awslabs/aws-cdk/pull/1797
         },
-        defaultRootObject: "index.html",
-        viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.HTTPSOnly,
+        viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.RedirectToHTTPS,
+        priceClass: cloudfront.PriceClass.PriceClass200,
         originConfigs: [
           {
-            s3OriginSource: {
-              s3BucketSource: bucket,
-              originAccessIdentity: originId
+            customOriginSource: {
+              originProtocolPolicy: cloudfront.OriginProtocolPolicy.HttpOnly, // S3 supports HTTP only??
+              domainName: `${bucket.bucketName}.s3-website.${
+                new cdk.Aws(this).region
+              }.amazonaws.com`
             },
             behaviors: [{ isDefaultBehavior: true }]
           }
