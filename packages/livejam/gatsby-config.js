@@ -31,7 +31,7 @@ module.exports = {
       resolve: 'gatsby-plugin-graphql-modules',
       options: {
         path: './graphql',
-        schemaModules: ['events'],
+        schemaModules: ['events', 'users'],
       },
     },
     {

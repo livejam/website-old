@@ -1,5 +1,4 @@
 const events = require('./events.json');
-const users = require('./users.json');
 
 module.exports = {
   typeDefs: `
@@ -13,12 +12,10 @@ module.exports = {
     description: String
     startsAt: String
     link: String
-    users: [User]
   }
 
-  type User {
-    id: ID!
-    name: String!
+  extend type User {
+    events: [Event]
   }
 `,
   resolvers: {
@@ -27,10 +24,9 @@ module.exports = {
         return events;
       },
     },
-
-    Event: {
-      users: (parent, args, context, info) => {
-        return parent.userIds.map(id => users.find(x => x.id === id));
+    User: {
+      events: (parent, args, context, info) => {
+        return events.filter(x => x.userIds.includes(parent.id));
       },
     },
   },
