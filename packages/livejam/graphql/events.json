@@ -5,16 +5,7 @@
     "description": "tbd",
     "startsAt": "Tomorrow, 1 pm",
     "link": "https://twitch.tv/skorfmann",
-    "users": [
-      {
-        "id": 1,
-        "name": "Mike"
-      },
-      {
-        "id": 2,
-        "name": "Sebastian"
-      }
-    ]
+    "userIds": [1, 3, 4]
   },
   {
     "id": 2,
@@ -22,15 +13,6 @@
     "description": "tbd",
     "startsAt": "Next week",
     "link": "https://youtube.com/foobar",
-    "users": [
-      {
-        "id": 4,
-        "name": "Thomas"
-      },
-      {
-        "id": 3,
-        "name": "Fabian"
-      }
-    ]
+    "userIds": [3, 4]
   }
 ]

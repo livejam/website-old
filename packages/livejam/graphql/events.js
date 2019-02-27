@@ -1,40 +1,5 @@
-const users = [
-  {
-    id: 1,
-    name: "Mike"
-  },
-  {
-    id: 2,
-    name: "Sebastian"
-  },
-  {
-    id: 4,
-    name: "Thomas"
-  },
-  {
-    id: 3,
-    name: "Fabian"
-  }
-];
-
-const events = [
-  {
-    id: 1,
-    title: "AWS CDK with GatsbyJS",
-    description: "tbd",
-    startsAt: "Tomorrow, 1 pm",
-    link: "https://twitch.tv/skorfmann",
-    userIds: [1, 3, 4]
-  },
-  {
-    id: 2,
-    title: "GraphQL Session",
-    description: "tbd",
-    startsAt: "Next week",
-    link: "https://youtube.com/foobar",
-    userIds: [3, 4]
-  }
-];
+const events = require('./events.json');
+const users = require('./users.json');
 
 module.exports = {
   typeDefs: `
@@ -60,13 +25,13 @@ module.exports = {
     Query: {
       events: (parent, args, context, info) => {
         return events;
-      }
+      },
     },
 
     Event: {
       users: (parent, args, context, info) => {
         return parent.userIds.map(id => users.find(x => x.id === id));
-      }
-    }
-  }
+      },
+    },
+  },
 };
