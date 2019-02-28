@@ -41,5 +41,15 @@ module.exports = {
         path: `${__dirname}/graphql`,
       },
     },
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        theme: {
+          palette: {
+            primary: { main: '#9c27b0' },
+          },
+        },
+      },
+    },
   ],
 };
