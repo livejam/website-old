@@ -9,7 +9,6 @@
     "@aws-cdk/aws-cloudfront": "^0.24.1",
     "@aws-cdk/aws-route53": "^0.24.1",
     "@aws-cdk/aws-s3": "^0.24.1",
-    "@aws-cdk/aws-s3-deployment": "^0.24.1",
     "@aws-cdk/cdk": "^0.24.1",
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",

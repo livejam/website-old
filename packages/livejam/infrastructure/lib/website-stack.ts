@@ -1,7 +1,5 @@
 import cdk = require("@aws-cdk/cdk");
-import s3deploy = require("@aws-cdk/aws-s3-deployment");
 import route53 = require("@aws-cdk/aws-route53");
-import path = require("path");
 
 import Distribution from "./constructs/distribution";
 
