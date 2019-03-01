@@ -34,5 +34,21 @@ export class WebsiteStack extends cdk.Stack {
       target: distribution.distribution,
       zone: mainZone
     });
+
+    new cdk.Output(this, "DistributionId", {
+      value: distribution.distribution.distributionId
+    });
+
+    new cdk.Output(this, "BucketName", {
+      value: distribution.bucket.bucketName
+    });
+
+    new cdk.Output(this, "BucketArn", {
+      value: distribution.bucket.bucketArn
+    });
+
+    new cdk.Output(this, "BucketWebsiteUrl", {
+      value: distribution.bucket.bucketWebsiteUrl
+    });
   }
 }

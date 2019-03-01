@@ -48,7 +48,8 @@
     "cdk:watch": "tsc --build infrastructure -w",
     "cdk:deploy": "cdk deploy",
     "cdk:diff": "cdk diff",
-    "cdk:destroy": "cdk destroy"
+    "cdk:destroy": "cdk destroy",
+    "cdk:output": "aws cloudformation describe-stacks --stack-name LivejamWebsiteStack | jq '.Stacks | .[] | .Outputs | reduce .[] as $i ({}; .[$i.OutputKey] = $i.OutputValue)'"
   },
   "repository": {
     "type": "git",
