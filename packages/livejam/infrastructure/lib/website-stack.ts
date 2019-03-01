@@ -1,7 +1,5 @@
 import cdk = require("@aws-cdk/cdk");
-import s3deploy = require("@aws-cdk/aws-s3-deployment");
 import route53 = require("@aws-cdk/aws-route53");
-import path = require("path");
 
 import Distribution from "./constructs/distribution";
 
@@ -22,11 +20,6 @@ export class WebsiteStack extends cdk.Stack {
       name: "LivejamMain",
       domainNames: ["www.livejam.io"],
       certificateArn: this.node.getContext("root_domain_certificate")
-    });
-
-    new s3deploy.BucketDeployment(this, "LivejamWebsiteDeployment", {
-      source: s3deploy.Source.asset(path.join(__dirname, "../../public")),
-      destinationBucket: distribution.bucket
     });
 
     new route53.AliasRecord(this, "AliasDomain", {
