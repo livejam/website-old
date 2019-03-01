@@ -10,11 +10,11 @@ phases:
       - yarn install
   build:
     commands:
-      - BRANCH_NAME=$(echo $CODEBUILD_WEBHOOK_HEAD_REF | cut -d/ -f 3) # e.g. refs/heads/improve-pipeline -> improve-pipeline
-      - echo branch $BRANCH_NAME
-      - yarn build
       - yarn cdk:build
-      - yarn cdk:deploy -- --require-approval never -c branch_name=$BRANCH_NAME
+      - yarn cdk:deploy -- --require-approval never
+      - yarn cdk:output:env
+      - yarn build
+      - yarn deploy
 
 cache:
   paths:
