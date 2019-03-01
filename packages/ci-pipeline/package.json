@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "cdk:build": "tsc --build infrastructure",
-    "cdk:watch": "tsc -w",
+    "cdk:watch": "tsc --build infrastructure -w",
     "cdk:deploy": "npm run cdk:build && cdk deploy",
     "cdk:diff": "cdk diff",
     "cdk:destroy": "cdk destroy"

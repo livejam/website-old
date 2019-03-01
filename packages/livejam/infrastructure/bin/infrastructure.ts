@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 import cdk = require("@aws-cdk/cdk");
-import { InfrastructureStack } from "../lib/infrastructure-stack";
+import { WebsiteStack } from "../lib/website-stack";
 
 const app = new cdk.App();
-new InfrastructureStack(app, "InfrastructureStack");
+
+new WebsiteStack(app, `LivejamWebsiteStack`, {
+  zoneId: app.node.getContext("main_zone_id")
+});
+
 app.run();

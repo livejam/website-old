@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 import codebuild = require("@aws-cdk/aws-codebuild");
-import codepipeline = require("@aws-cdk/aws-codepipeline");
 import iam = require("@aws-cdk/aws-iam");
 import cdk = require("@aws-cdk/cdk");
 
@@ -8,37 +7,47 @@ export class LivejamPipeline extends cdk.Stack {
   constructor(parent: cdk.App, name: string, props?: cdk.StackProps) {
     super(parent, name, props);
 
-    const pipeline = new codepipeline.Pipeline(this, "LivejamPipeline", {
-      pipelineName: "livejam-pipeline"
-    });
-
-    // Source
     const githubAccessToken = new cdk.SecretParameter(this, "GitHubToken", {
       ssmParameter: "/CDK/GitHubToken"
     });
 
-    const source = new codepipeline.GitHubSourceAction(this, "GitHubSource", {
-      stage: pipeline.addStage("Source"),
-      owner: "IntraBaseIO", // Case sensitive!
+    const gitHubSource = new codebuild.GitHubSource({
+      owner: "IntraBaseIO",
       repo: "livejam",
-      branch: "master",
-      oauthToken: githubAccessToken.value
+      oauthToken: githubAccessToken.value,
+      webhook: true // will be overwritten
     });
 
-    // Build
-
-    const buildStage = pipeline.addStage("Deploy");
-    const project = new codebuild.PipelineProject(this, "Livejam", {
+    const project = new codebuild.Project(this, "Livejam", {
+      source: gitHubSource,
       buildSpec: "packages/livejam/buildspec.yml",
       environment: {
         buildImage: codebuild.LinuxBuildImage.UBUNTU_14_04_NODEJS_10_1_0
       }
     });
 
-    new codebuild.PipelineBuildAction(this, "LivejamDeployment", {
-      stage: buildStage,
-      project,
-      inputArtifact: source.outputArtifact
+    const projectResource = project.node.findChild(
+      "Resource"
+    ) as codebuild.CfnProject;
+
+    projectResource.addPropertyOverride("Triggers", {
+      Webhook: true,
+      FilterGroups: [
+        [
+          {
+            Pattern: "PUSH",
+            Type: "EVENT"
+          },
+          {
+            Pattern: "^136789|179382$",
+            Type: "ACTOR_ACCOUNT_ID"
+          },
+          {
+            Pattern: "^refs/heads/master$",
+            Type: "HEAD_REF"
+          }
+        ]
+      ]
     });
 
     // This should be reduced to the actual necessary permissions

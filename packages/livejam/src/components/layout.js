@@ -1,11 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { StaticQuery, graphql } from "gatsby";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { StaticQuery, graphql } from 'gatsby';
+import AppBar from '@material-ui/core/AppBar';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import { withStyles } from '@material-ui/core/styles';
 
-import Header from "./header";
-import "./layout.css";
-
-const Layout = ({ children }) => (
+const Layout = ({ children, classes }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -18,25 +21,52 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0px 1.0875rem 1.45rem`,
-            paddingTop: 0
-          }}
-        >
-          <main>{children}</main>
-          <footer>© {new Date().getFullYear()} Mike &amp; Sebastian</footer>
-        </div>
+        <CssBaseline />
+        <AppBar position="static" className={classes.appBar} color="primary">
+          <Toolbar>
+            <Typography variant="h6" color="inherit" noWrap>
+              {data.site.siteMetadata.title}
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <main>{children}</main>
+        <Divider />
+        <footer className={classes.footer}>
+          <Typography
+            variant="subtitle1"
+            align="center"
+            color="textSecondary"
+            component="p">
+            © {new Date().getFullYear()} Mike &amp; Sebastian
+          </Typography>
+        </footer>
       </>
     )}
   />
 );
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
-export default Layout;
+const styles = theme => ({
+  appBar: {
+    position: 'relative',
+  },
+  layout: {
+    width: 'auto',
+    marginLeft: theme.spacing.unit * 3,
+    marginRight: theme.spacing.unit * 3,
+    [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
+      width: 1100,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    },
+  },
+  footer: {
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing.unit * 6,
+  },
+});
+
+export default withStyles(styles)(Layout);
