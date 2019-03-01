@@ -15,7 +15,7 @@ export class LivejamPipeline extends cdk.Stack {
       owner: "IntraBaseIO",
       repo: "livejam",
       oauthToken: githubAccessToken.value,
-      webhook: true
+      webhook: true // will be overwritten
     });
 
     const project = new codebuild.Project(this, "Livejam", {
@@ -38,7 +38,10 @@ export class LivejamPipeline extends cdk.Stack {
             Pattern: "PULL_REQUEST_CREATED,PULL_REQUEST_UPDATED",
             Type: "EVENT"
           },
-          { Pattern: "136789", Type: "ACTOR_ACCOUNT_ID" }
+          {
+            Pattern: "^(136789|179382)$",
+            Type: "ACTOR_ACCOUNT_ID"
+          }
         ]
       ]
     });
