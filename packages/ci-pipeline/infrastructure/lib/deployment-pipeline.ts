@@ -35,12 +35,16 @@ export class LivejamPipeline extends cdk.Stack {
       FilterGroups: [
         [
           {
-            Pattern: "PULL_REQUEST_CREATED,PULL_REQUEST_UPDATED",
+            Pattern: "PUSH",
             Type: "EVENT"
           },
           {
-            Pattern: "^(136789|179382)$",
+            Pattern: "^136789|179382$",
             Type: "ACTOR_ACCOUNT_ID"
+          },
+          {
+            Pattern: "^refs/heads/master$",
+            Type: "HEAD_REF"
           }
         ]
       ]
