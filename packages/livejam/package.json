@@ -24,6 +24,7 @@
     "gatsby-plugin-material-ui": "^1.2.4",
     "gatsby-plugin-offline": "^2.0.24",
     "gatsby-plugin-react-helmet": "^3.0.7",
+    "gatsby-plugin-s3": "^0.2.4",
     "gatsby-plugin-sharp": "^2.0.23",
     "gatsby-source-filesystem": "^2.0.23",
     "gatsby-source-modular-graphql": "^1.1.0",
@@ -47,12 +48,14 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+    "deploy": "set -a ; source stack.env && gatsby-plugin-s3 deploy --yes && aws cloudfront create-invalidation --distribution-id ${DistributionId} --paths \"/*\"",
     "cdk:build": "tsc --build infrastructure",
     "cdk:watch": "tsc --build infrastructure -w",
     "cdk:deploy": "cdk deploy",
     "cdk:diff": "cdk diff",
     "cdk:destroy": "cdk destroy",
-    "cdk:output": "aws cloudformation describe-stacks --stack-name LivejamWebsiteStack | jq '.Stacks | .[] | .Outputs | reduce .[] as $i ({}; .[$i.OutputKey] = $i.OutputValue)'"
+    "cdk:output:json": "aws cloudformation describe-stacks --stack-name LivejamWebsiteStack | jq '.Stacks | .[] | .Outputs | reduce .[] as $i ({}; .[$i.OutputKey] = $i.OutputValue)'",
+    "cdk:output:env": "aws cloudformation describe-stacks --stack-name LivejamWebsiteStack | jq  -r '.Stacks | .[] | .Outputs | reduce .[] as $i ({}; .[$i.OutputKey] = $i.OutputValue) | to_entries[] | [.key,.value] | join(\"=\")' > stack.env"
   },
   "repository": {
     "type": "git",

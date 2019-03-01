@@ -24,11 +24,6 @@ export class WebsiteStack extends cdk.Stack {
       certificateArn: this.node.getContext("root_domain_certificate")
     });
 
-    new s3deploy.BucketDeployment(this, "LivejamWebsiteDeployment", {
-      source: s3deploy.Source.asset(path.join(__dirname, "../../public")),
-      destinationBucket: distribution.bucket
-    });
-
     new route53.AliasRecord(this, "AliasDomain", {
       recordName: "www",
       target: distribution.distribution,
