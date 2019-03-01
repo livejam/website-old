@@ -22,7 +22,9 @@ export class LivejamPipeline extends cdk.Stack {
       source: gitHubSource,
       buildSpec: "packages/livejam/buildspec.yml",
       environment: {
-        buildImage: codebuild.LinuxBuildImage.UBUNTU_14_04_NODEJS_10_1_0
+        buildImage: codebuild.LinuxBuildImage.fromDockerHub(
+          "livejamio/aws-codebuild"
+        )
       }
     });
 

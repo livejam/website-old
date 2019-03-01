@@ -5,11 +5,7 @@ version: 0.2
 phases:
   install:
     commands:
-      - apt update
-      - apt install jq
-      - pip install --upgrade awscli
       - cd packages/livejam
-      - npm install -g yarn
       - yarn install
   build:
     commands:
