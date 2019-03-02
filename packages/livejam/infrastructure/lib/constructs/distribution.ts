@@ -39,7 +39,7 @@ export default class Distribution extends cdk.Construct {
             customOriginSource: {
               originProtocolPolicy: cloudfront.OriginProtocolPolicy.HttpOnly, // S3 supports HTTP only??
               domainName: `${bucket.bucketName}.s3-website.${
-                new cdk.Aws(this).region
+                new cdk.ScopedAws(this).region
               }.amazonaws.com`
             },
             behaviors: [{ isDefaultBehavior: true }]
