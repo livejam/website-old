@@ -96,7 +96,9 @@ const styles = theme => ({
   heroContent: {
     maxWidth: 700,
     margin: '0 auto',
-    padding: `10% ${theme.spacing.unit * 10}px`,
+    paddingTop: '84px',
+    paddingLeft: '20px',
+    paddingRight: '20px',
   },
   heroActions: {
     marginTop: '5%',
