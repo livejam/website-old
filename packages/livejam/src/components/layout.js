@@ -20,16 +20,20 @@ const Layout = ({ children, classes }) => (
       }
     `}
     render={data => (
-      <>
+      <div className={classes.root}>
         <CssBaseline />
-        <AppBar position="static" className={classes.appBar} color="primary">
+        <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
-            <Typography variant="h6" color="inherit" noWrap>
+            <Typography
+              variant="h6"
+              color="inherit"
+              noWrap
+              className={classes.title}>
               {data.site.siteMetadata.title}
             </Typography>
           </Toolbar>
         </AppBar>
-        <main>{children}</main>
+        <main className={classes.main}>{children}</main>
         <Divider />
         <footer className={classes.footer}>
           <Typography
@@ -40,7 +44,7 @@ const Layout = ({ children, classes }) => (
             © {new Date().getFullYear()} Mike &amp; Sebastian
           </Typography>
         </footer>
-      </>
+      </div>
     )}
   />
 );
@@ -50,8 +54,15 @@ Layout.propTypes = {
 };
 
 const styles = theme => ({
-  appBar: {
+  root: {
+    minHeight: '100%',
     position: 'relative',
+  },
+  appBar: {
+    backgroundColor: 'black',
+  },
+  title: {
+    fontWeight: 700,
   },
   layout: {
     width: 'auto',
@@ -63,9 +74,15 @@ const styles = theme => ({
       marginRight: 'auto',
     },
   },
+  main: {
+    paddingBottom: '124px',
+  },
   footer: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing.unit * 6,
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
   },
 });
 
