@@ -6,7 +6,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
+import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
+
+import SpeakerCard from './speaker-card';
 
 const Layout = ({ children, classes }) => (
   <StaticQuery
@@ -17,31 +20,60 @@ const Layout = ({ children, classes }) => (
             title
           }
         }
+        mikebild: file(relativePath: { eq: "mikebild.jpg" }) {
+          childImageSharp {
+            fluid(quality: 100, maxHeight: 150, maxWidth: 150) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        sebastiankorfmann: file(relativePath: { eq: "sebastiankorfmann.jpg" }) {
+          childImageSharp {
+            fluid(quality: 100, maxHeight: 150, maxWidth: 150) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     `}
-    render={data => (
-      <>
-        <CssBaseline />
-        <AppBar position="static" className={classes.appBar} color="primary">
-          <Toolbar>
-            <Typography variant="h6" color="inherit" noWrap>
-              {data.site.siteMetadata.title}
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <main>{children}</main>
-        <Divider />
-        <footer className={classes.footer}>
-          <Typography
-            variant="subtitle1"
-            align="center"
-            color="textSecondary"
-            component="p">
-            © {new Date().getFullYear()} Mike &amp; Sebastian
-          </Typography>
-        </footer>
-      </>
-    )}
+    render={({ site, sebastiankorfmann, mikebild }) => {
+      return (
+        <div className={classes.root}>
+          <CssBaseline />
+          <AppBar position="fixed" className={classes.appBar}>
+            <Toolbar>
+              <Typography
+                variant="h6"
+                color="inherit"
+                noWrap
+                className={classes.title}>
+                {site.siteMetadata.title}
+              </Typography>
+            </Toolbar>
+          </AppBar>
+          <main className={classes.main}>{children}</main>
+          <Divider />
+          <footer className={classes.footer}>
+            <Grid container spacing={40} justify="center">
+              <Grid item sm={6} md={4} lg={3}>
+                <SpeakerCard
+                  image={sebastiankorfmann.childImageSharp.fluid.src}
+                  headline="Sebastian Korfmann"
+                  link="https://www.skorfmann.com"
+                />
+              </Grid>
+              <Grid item sm={6} md={4} lg={3}>
+                <SpeakerCard
+                  image={mikebild.childImageSharp.fluid.src}
+                  headline="Mike Bild"
+                  link="https://www.mikebild.com"
+                />
+              </Grid>
+            </Grid>
+          </footer>
+        </div>
+      );
+    }}
   />
 );
 
@@ -50,8 +82,15 @@ Layout.propTypes = {
 };
 
 const styles = theme => ({
-  appBar: {
+  root: {
+    minHeight: '100%',
     position: 'relative',
+  },
+  appBar: {
+    backgroundColor: 'black',
+  },
+  title: {
+    fontWeight: 700,
   },
   layout: {
     width: 'auto',
@@ -63,9 +102,13 @@ const styles = theme => ({
       marginRight: 'auto',
     },
   },
+  main: {},
   footer: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing.unit * 6,
+    position: 'static',
+    bottom: 0,
+    width: '100%',
   },
 });
 
