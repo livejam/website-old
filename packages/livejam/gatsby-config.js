@@ -54,7 +54,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-        bucketName: process.env.BucketName,
+        bucketName: process.env.BucketName || "stub-for-gatsby-build",
         protocol: "https",
         hostname: "www.livejam.io",
         params: {}
