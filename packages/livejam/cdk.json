@@ -2,6 +2,7 @@
   "app": "node infrastructure/bin/infrastructure.js",
   "context": {
     "root_domain_certificate": "arn:aws:acm:us-east-1:049168573098:certificate/6674ab99-db13-427a-bf3a-3f93f849a5e0",
+    "root_naked_domain_certificate": "arn:aws:acm:us-east-1:049168573098:certificate/e0d4c1aa-f886-4db3-a95a-4d4c5ee012b2",
     "preview_domain_certificate": "arn:aws:acm:us-east-1:049168573098:certificate/8b3d0000-cd30-4def-9e79-1fff3cc247d4",
     "preview_zone_id": "Z2S6DFHCHOHUQT",
     "main_zone_id": "Z1NDRVIZWTQK44"
