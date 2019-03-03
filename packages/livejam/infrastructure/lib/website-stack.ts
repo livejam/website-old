@@ -2,6 +2,7 @@ import cdk = require("@aws-cdk/cdk");
 import route53 = require("@aws-cdk/aws-route53");
 
 import Distribution from "./constructs/distribution";
+import RedirectDistribution from "./constructs/redirect-distribution";
 
 interface InfrastructureStackProps {
   zoneId: string;
@@ -22,9 +23,26 @@ export class WebsiteStack extends cdk.Stack {
       certificateArn: this.node.getContext("root_domain_certificate")
     });
 
+    const redirectDistribution = new RedirectDistribution(
+      this,
+      "LivejamRedirectDistribution",
+      {
+        name: "LivejamRedirectMain",
+        domainNames: ["livejam.io"],
+        certificateArn: this.node.getContext("root_naked_domain_certificate"),
+        redirectTo: "www.livejam.io"
+      }
+    );
+
     new route53.AliasRecord(this, "AliasDomain", {
       recordName: "www",
       target: distribution.distribution,
+      zone: mainZone
+    });
+
+    new route53.AliasRecord(this, "RedirectNakedDomain", {
+      recordName: "livejam.io.",
+      target: redirectDistribution.distribution,
       zone: mainZone
     });
 
