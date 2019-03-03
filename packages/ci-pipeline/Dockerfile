@@ -1,6 +1,14 @@
 FROM node:10.15-alpine
 
 RUN apk --no-cache add \
+  autoconf \
+  automake \
+  g++ \
+  libc6-compat \
+  libjpeg-turbo-dev \
+  libpng-dev \
+  make \
+  nasm \
   jq \
   curl \
   bash \
