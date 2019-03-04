@@ -24,6 +24,7 @@
     "gatsby-plugin-material-ui": "^1.2.4",
     "gatsby-plugin-offline": "^2.0.24",
     "gatsby-plugin-react-helmet": "^3.0.7",
+    "gatsby-plugin-root-import": "^2.0.5",
     "gatsby-plugin-s3": "^0.2.4",
     "gatsby-plugin-sharp": "^2.0.23",
     "gatsby-source-filesystem": "^2.0.23",
@@ -31,11 +32,13 @@
     "gatsby-transformer-sharp": "^2.1.15",
     "graphql-tag": "^2.10.1",
     "graphql-tools": "^4.0.4",
+    "node-sass": "^4.11.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
     "react-apollo": "^2.5.1",
     "react-dom": "^16.8.3",
     "react-helmet": "^5.2.0",
+    "react-image-gallery": "^0.8.14",
     "typescript": "^3.3.3333"
   },
   "keywords": [
@@ -63,5 +66,9 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "dependencies": {
+    "gatsby-plugin-sass": "^2.0.10",
+    "gatsby-plugin-web-font-loader": "^1.0.4"
   }
 }

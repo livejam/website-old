@@ -1,10 +1,11 @@
-import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import BackgroundImage from 'gatsby-background-image';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import React from "react";
+import { StaticQuery, graphql } from "gatsby";
+import BackgroundImage from "gatsby-background-image";
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
 
 export const Hero = ({ classes }) => (
   <StaticQuery
@@ -12,8 +13,8 @@ export const Hero = ({ classes }) => (
       query {
         desktop: file(relativePath: { eq: "hero.jpg" }) {
           childImageSharp {
-            fluid(quality: 100, maxWidth: 4160) {
-              ...GatsbyImageSharpFluid_withWebp
+            fluid(quality: 100, maxWidth: 4200) {
+              ...GatsbyImageSharpFluid
             }
           }
         }
@@ -35,7 +36,8 @@ export const Hero = ({ classes }) => (
         <BackgroundImage
           Tag="section"
           className={classes.backgroundImage}
-          fluid={data.desktop.childImageSharp.fluid}>
+          fluid={data.desktop.childImageSharp.fluid}
+        >
           <div className={classes.heroUnit}>
             <div className={classes.heroContent}>
               <Typography
@@ -43,14 +45,16 @@ export const Hero = ({ classes }) => (
                 variant="h1"
                 align="center"
                 className={classes.heroHeadline}
-                gutterBottom>
+                gutterBottom
+              >
                 Hi people!
               </Typography>
               <Typography
                 variant="h6"
                 align="justify"
                 className={classes.heroSubHeadline}
-                paragraph>
+                paragraph
+              >
                 Join fellow tech makers for live jam session on Twitch, Youtube
                 and other channels. Interact in real time, explore new topics
                 and watch how others would troubleshoot a problem.
@@ -63,15 +67,27 @@ export const Hero = ({ classes }) => (
                       variant="h4"
                       align="center"
                       className={classes.heroSubHeadline}
-                      paragraph>
+                      paragraph
+                    >
                       Next Session
                     </Typography>
-                    <Button
+                    <TextField
+                      id="outlined-email-input"
+                      label="Email"
+                      className={classes.textField}
+                      type="email"
+                      name="email"
+                      autoComplete="email"
+                      margin="normal"
                       variant="outlined"
+                    />
+                    <Button
+                      variant="contained"
                       color="secondary"
                       size="large"
-                      href={nextEvent.link}>
-                      {nextEvent.title}
+                      href={nextEvent.link}
+                    >
+                      Notify me!
                     </Button>
                   </Grid>
                 </Grid>
@@ -87,27 +103,31 @@ export const Hero = ({ classes }) => (
 const styles = theme => ({
   heroUnit: {},
   heroHeadline: {
-    color: 'white',
-    paddingTop: '5%',
+    color: "white",
+    paddingTop: "5%"
   },
   heroSubHeadline: {
-    color: 'white',
+    color: "white"
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit
   },
   heroContent: {
     maxWidth: 700,
-    margin: '0 auto',
-    paddingTop: '84px',
-    paddingLeft: '20px',
-    paddingRight: '20px',
+    margin: "0 auto",
+    paddingTop: "84px",
+    paddingLeft: "20px",
+    paddingRight: "20px"
   },
   heroActions: {
-    marginTop: '5%',
+    marginTop: "5%"
   },
   backgroundImage: {
-    width: '100vw',
-    height: '100vh',
-    opacity: 0.9,
-  },
+    width: "100vw",
+    height: "100vh",
+    filter: "brightness(.2)"
+  }
 });
 
 export default withStyles(styles)(Hero);

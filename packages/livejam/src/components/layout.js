@@ -1,17 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from 'gatsby';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+import React from "react";
+import PropTypes from "prop-types";
+import Helmet from "react-helmet";
+import { StaticQuery, graphql } from "gatsby";
+import "src/assets/scss/material-kit-react.scss?v=1.4.0";
 
-import SpeakerCard from './speaker-card';
-
-const Layout = ({ children, classes }) => (
+const Layout = ({ children }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -20,96 +13,36 @@ const Layout = ({ children, classes }) => (
             title
           }
         }
-        mikebild: file(relativePath: { eq: "mikebild.jpg" }) {
-          childImageSharp {
-            fluid(quality: 100, maxHeight: 150, maxWidth: 150) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        sebastiankorfmann: file(relativePath: { eq: "sebastiankorfmann.jpg" }) {
-          childImageSharp {
-            fluid(quality: 100, maxHeight: 150, maxWidth: 150) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
       }
     `}
-    render={({ site, sebastiankorfmann, mikebild }) => {
-      return (
-        <div className={classes.root}>
-          <CssBaseline />
-          <AppBar position="fixed" className={classes.appBar}>
-            <Toolbar>
-              <Typography
-                variant="h6"
-                color="inherit"
-                noWrap
-                className={classes.title}>
-                {site.siteMetadata.title}
-              </Typography>
-            </Toolbar>
-          </AppBar>
-          <main className={classes.main}>{children}</main>
-          <Divider />
-          <footer className={classes.footer}>
-            <Grid container spacing={40} justify="center">
-              <Grid item sm={6} md={4} lg={3}>
-                <SpeakerCard
-                  image={sebastiankorfmann.childImageSharp.fluid.src}
-                  headline="Sebastian Korfmann"
-                  link="https://www.skorfmann.com"
-                />
-              </Grid>
-              <Grid item sm={6} md={4} lg={3}>
-                <SpeakerCard
-                  image={mikebild.childImageSharp.fluid.src}
-                  headline="Mike Bild"
-                  link="https://www.mikebild.com"
-                />
-              </Grid>
-            </Grid>
-          </footer>
-        </div>
-      );
-    }}
+    render={data => (
+      <div>
+        <Helmet
+          title={data.site.siteMetadata.title}
+          meta={[
+            { name: "description", content: "Gatsby Material-UI Starter" },
+            {
+              name: "keywords",
+              content: "Gatsby, Material-UI, React, javascript,"
+            }
+          ]}
+        >
+          <html lang="en" />
+          <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+            integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+            crossorigin="anonymous"
+          />
+        </Helmet>
+        <div>{children}</div>
+      </div>
+    )}
   />
 );
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
-const styles = theme => ({
-  root: {
-    minHeight: '100%',
-    position: 'relative',
-  },
-  appBar: {
-    backgroundColor: 'black',
-  },
-  title: {
-    fontWeight: 700,
-  },
-  layout: {
-    width: 'auto',
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
-      width: 1100,
-      marginLeft: 'auto',
-      marginRight: 'auto',
-    },
-  },
-  main: {},
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing.unit * 6,
-    position: 'static',
-    bottom: 0,
-    width: '100%',
-  },
-});
-
-export default withStyles(styles)(Layout);
+export default Layout;
