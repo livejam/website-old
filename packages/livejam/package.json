@@ -23,7 +23,7 @@
     "gatsby-plugin-manifest": "^2.0.20",
     "gatsby-plugin-material-ui": "^1.2.4",
     "gatsby-plugin-offline": "^2.0.24",
-    "gatsby-plugin-react-helmet": "^3.0.7",
+    "gatsby-plugin-react-helmet": "^3.0.8",
     "gatsby-plugin-s3": "^0.2.4",
     "gatsby-plugin-sharp": "^2.0.23",
     "gatsby-source-filesystem": "^2.0.23",
