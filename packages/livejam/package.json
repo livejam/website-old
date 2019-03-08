@@ -32,6 +32,7 @@
     "gatsby-transformer-sharp": "^2.1.15",
     "graphql-tag": "^2.10.1",
     "graphql-tools": "^4.0.4",
+    "mdi-material-ui": "^5.10.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
     "react-apollo": "^2.5.1",

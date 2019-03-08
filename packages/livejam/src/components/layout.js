@@ -1,15 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from 'gatsby';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+import React from "react";
+import PropTypes from "prop-types";
+import { StaticQuery, graphql } from "gatsby";
+import AppBar from "@material-ui/core/AppBar";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
+import Grid from "@material-ui/core/Grid";
+import Badge from "@material-ui/core/Badge";
+import IconButton from "@material-ui/core/IconButton";
+import { Twitter } from "mdi-material-ui";
+import { withStyles } from "@material-ui/core/styles";
 
-import SpeakerCard from './speaker-card';
+import SpeakerCard from "./speaker-card";
 
 const Layout = ({ children, classes }) => (
   <StaticQuery
@@ -40,15 +43,25 @@ const Layout = ({ children, classes }) => (
       return (
         <div className={classes.root}>
           <CssBaseline />
-          <AppBar position="fixed" className={classes.appBar}>
+          <AppBar position="sticky" className={classes.appBar}>
             <Toolbar>
               <Typography
                 variant="h6"
                 color="inherit"
                 noWrap
-                className={classes.title}>
+                className={classes.title}
+              >
                 {site.siteMetadata.title}
               </Typography>
+              <div className={classes.grow} />
+              <div>
+                <IconButton
+                  color="inherit"
+                  href="https://twitter.com/livejamio"
+                >
+                  <Twitter />
+                </IconButton>
+              </div>
             </Toolbar>
           </AppBar>
           <main className={classes.main}>{children}</main>
@@ -78,38 +91,41 @@ const Layout = ({ children, classes }) => (
 );
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 const styles = theme => ({
   root: {
-    minHeight: '100%',
-    position: 'relative',
+    minHeight: "100%",
+    position: "relative"
   },
   appBar: {
-    backgroundColor: 'black',
+    backgroundColor: "black"
   },
   title: {
-    fontWeight: 700,
+    fontWeight: 700
+  },
+  grow: {
+    flexGrow: 1
   },
   layout: {
-    width: 'auto',
+    width: "auto",
     marginLeft: theme.spacing.unit * 3,
     marginRight: theme.spacing.unit * 3,
     [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
       width: 1100,
-      marginLeft: 'auto',
-      marginRight: 'auto',
-    },
+      marginLeft: "auto",
+      marginRight: "auto"
+    }
   },
   main: {},
   footer: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing.unit * 6,
-    position: 'static',
+    position: "static",
     bottom: 0,
-    width: '100%',
-  },
+    width: "100%"
+  }
 });
 
 export default withStyles(styles)(Layout);
