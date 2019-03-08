@@ -7,8 +7,11 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
-import Badge from "@material-ui/core/Badge";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardContent from "@material-ui/core/CardContent";
 import IconButton from "@material-ui/core/IconButton";
+import Paper from "@material-ui/core/Paper";
 import { Twitter } from "mdi-material-ui";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -44,7 +47,7 @@ const Layout = ({ children, classes }) => (
         <div className={classes.root}>
           <CssBaseline />
           <AppBar position="sticky" className={classes.appBar}>
-            <Toolbar>
+            <Toolbar className={classes.layout}>
               <Typography
                 variant="h6"
                 color="inherit"
@@ -65,25 +68,53 @@ const Layout = ({ children, classes }) => (
             </Toolbar>
           </AppBar>
           <main className={classes.main}>{children}</main>
+
           <Divider />
-          <footer className={classes.footer}>
-            <Grid container spacing={40} justify="center">
-              <Grid item sm={6} md={4} lg={3}>
-                <SpeakerCard
-                  image={sebastiankorfmann.childImageSharp.fluid.src}
-                  headline="Sebastian Korfmann"
-                  link="https://www.skorfmann.com"
-                />
+          <div className={classes.layout}>
+            <Typography variant="h2" color="inherit">
+              Yeah
+            </Typography>
+
+            <Grid container spacing={24}>
+              <Grid item xs={12} md={8}>
+                <Card>
+                  <CardHeader>foo</CardHeader>
+                  <CardContent>
+                    bar
+                    <SpeakerCard
+                      image={sebastiankorfmann.childImageSharp.fluid.src}
+                      headline="Sebastian Korfmann"
+                      link="https://www.skorfmann.com"
+                    />
+                    <SpeakerCard
+                      image={mikebild.childImageSharp.fluid.src}
+                      headline="Mike Bild"
+                      link="https://www.mikebild.com"
+                    />
+                  </CardContent>
+                </Card>
               </Grid>
-              <Grid item sm={6} md={4} lg={3}>
-                <SpeakerCard
-                  image={mikebild.childImageSharp.fluid.src}
-                  headline="Mike Bild"
-                  link="https://www.mikebild.com"
-                />
+              <Grid item xs={12} md={4}>
+                <Card>
+                  <CardHeader>foo</CardHeader>
+                  <CardContent>
+                    bar
+                    <SpeakerCard
+                      image={sebastiankorfmann.childImageSharp.fluid.src}
+                      headline="Sebastian Korfmann"
+                      link="https://www.skorfmann.com"
+                    />
+                    <SpeakerCard
+                      image={mikebild.childImageSharp.fluid.src}
+                      headline="Mike Bild"
+                      link="https://www.mikebild.com"
+                    />
+                  </CardContent>
+                </Card>
               </Grid>
             </Grid>
-          </footer>
+          </div>
+          <footer className={classes.footer} />
         </div>
       );
     }}
@@ -112,8 +143,8 @@ const styles = theme => ({
     width: "auto",
     marginLeft: theme.spacing.unit * 3,
     marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
-      width: 1100,
+    [theme.breakpoints.up(1400 + theme.spacing.unit * 3 * 2)]: {
+      width: 1400,
       marginLeft: "auto",
       marginRight: "auto"
     }
