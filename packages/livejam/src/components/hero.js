@@ -112,9 +112,7 @@ const styles = theme => ({
     marginTop: "5%"
   },
   backgroundImage: {
-    width: "100vw",
-    height: "100vh",
-    opacity: 0.9
+    height: "66vh"
   }
 });
 
