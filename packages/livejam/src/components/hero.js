@@ -3,6 +3,7 @@ import { StaticQuery, graphql } from "gatsby";
 import BackgroundImage from "gatsby-background-image";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -51,39 +52,40 @@ export const Hero = ({ classes }) => (
               >
                 Hi people!
               </Typography>
-              <Typography
-                variant="h6"
-                align="justify"
-                className={classes.heroSubHeadline}
-                paragraph
-              >
-                Join fellow tech makers for live jam session on Twitch, Youtube
-                and other channels. Interact in real time, explore new topics
-                and watch how others would troubleshoot a problem.
-              </Typography>
-
-              <div className={classes.heroActions}>
-                <Grid container spacing={24} justify="center">
-                  <Grid item>
-                    <Typography
-                      variant="h4"
-                      align="center"
-                      className={classes.heroSubHeadline}
-                      paragraph
-                    >
-                      Next Session
-                    </Typography>
-                    <Button
-                      variant="outlined"
-                      color="secondary"
-                      size="large"
-                      href={nextEvent.streaming.link}
-                    >
-                      {nextEvent.title}
-                    </Button>
+              <Paper className={classes.paper} elevation={1}>
+                <Typography
+                  variant="h5"
+                  align="center"
+                  className={classes.heroSubHeadline}
+                  paragraph
+                >
+                  Join fellow tech makers for live jam session on Twitch,
+                  Youtube and other channels. Interact in real time, explore new
+                  topics and watch how others would troubleshoot a problem.
+                </Typography>
+                <div className={classes.heroActions}>
+                  <Grid container spacing={24} justify="center">
+                    <Grid item>
+                      <Typography
+                        variant="h4"
+                        align="center"
+                        className={classes.heroSubHeadline}
+                        paragraph
+                      >
+                        Next Session
+                      </Typography>
+                      <Button
+                        variant="outlined"
+                        color="secondary"
+                        size="large"
+                        href={nextEvent.streaming.link}
+                      >
+                        {nextEvent.title}
+                      </Button>
+                    </Grid>
                   </Grid>
-                </Grid>
-              </div>
+                </div>
+              </Paper>
             </div>
           </div>
         </BackgroundImage>
@@ -110,6 +112,14 @@ const styles = theme => ({
   },
   heroActions: {
     marginTop: "5%"
+  },
+  paper: {
+    ...theme.mixins.gutters(),
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2,
+    opacity: 0.8,
+    backgroundColor: "#000",
+    color: "white"
   },
   backgroundImage: {
     height: "66vh"
