@@ -1,18 +1,27 @@
 [
   {
     "id": 1,
-    "name": "Mike"
+    "name": "Mike Bild",
+    "links": {
+      "twitter": "https://twitter.com/mikebild"
+    },
+    "avatarUrl": "mikebild.jpg"
   },
   {
     "id": 2,
-    "name": "Sebastian"
-  },
-  {
-    "id": 4,
-    "name": "Thomas"
+    "name": "Sebastian Korfmann",
+    "links": {
+      "twitter": "https://twitter.com/skorfmann",
+      "website": "https://skorfmann.com"
+    },
+    "avatarUrl": "skorfmann.jpg"
   },
   {
     "id": 3,
-    "name": "Fabian"
+    "name": "Andreas Heumaier",
+    "links": {
+      "twitter": "https://twitter.com/aheumaier"
+    },
+    "avatarUrl": "aheumaier.jpg"
   }
 ]

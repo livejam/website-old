@@ -1,13 +1,13 @@
-import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import React from "react";
+import { StaticQuery, graphql } from "gatsby";
+import Button from "@material-ui/core/Button";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
 
 const FeaturedEvents = ({ classes }) => {
   return (
@@ -17,7 +17,8 @@ const FeaturedEvents = ({ classes }) => {
         variant="h3"
         align="center"
         color="textPrimary"
-        className={classes.sectionHeadline}>
+        className={classes.sectionHeadline}
+      >
         Featured LiveJams
       </Typography>
       <Grid container spacing={40}>
@@ -28,7 +29,10 @@ const FeaturedEvents = ({ classes }) => {
                 id
                 title
                 description
-                link
+                streaming {
+                  platform
+                  link
+                }
                 startsAt
                 users {
                   name
@@ -40,14 +44,15 @@ const FeaturedEvents = ({ classes }) => {
             return (
               <>
                 {events.map(
-                  ({ id, title, description, link, startsAt, users }) => (
+                  ({ id, title, description, streaming, startsAt, users }) => (
                     <Grid
                       item
                       key={id}
                       sm={6}
                       md={4}
                       lg={3}
-                      className={classes.cardContainer}>
+                      className={classes.cardContainer}
+                    >
                       <Card className={classes.card}>
                         <CardMedia
                           className={classes.cardMedia}
@@ -61,7 +66,7 @@ const FeaturedEvents = ({ classes }) => {
                           <Typography gutterBottom variant="h6" component="h2">
                             {users &&
                               Array.isArray(users) &&
-                              users.map(x => x.name).join(', ')}
+                              users.map(x => x.name).join(", ")}
                           </Typography>
 
                           <Typography gutterBottom variant="h6" component="h2">
@@ -74,7 +79,8 @@ const FeaturedEvents = ({ classes }) => {
                             size="small"
                             color="primary"
                             component="a"
-                            href={link}>
+                            href={streaming.link}
+                          >
                             Watch
                           </Button>
                         </CardActions>
@@ -93,30 +99,30 @@ const FeaturedEvents = ({ classes }) => {
 
 const styles = theme => ({
   sectionHeadline: {
-    paddingBottom: 80,
+    paddingBottom: 80
   },
   cardContainer: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   cardGrid: {
     padding: `${theme.spacing.unit * 8}px 0`,
-    width: 'auto',
+    width: "auto",
     marginLeft: theme.spacing.unit * 3,
     marginRight: theme.spacing.unit * 3,
     [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
       width: 1100,
-      marginLeft: 'auto',
-      marginRight: 'auto',
-    },
+      marginLeft: "auto",
+      marginRight: "auto"
+    }
   },
   card: {
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
+    height: "100%",
+    display: "flex",
+    flexDirection: "column"
   },
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
-  },
+    paddingTop: "56.25%" // 16:9
+  }
 });
 
 export default withStyles(styles)(FeaturedEvents);
