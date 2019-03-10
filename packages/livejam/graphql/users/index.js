@@ -1,4 +1,4 @@
-const users = require('./users.json');
+const users = require("./users.json");
 
 module.exports = {
   typeDefs: `
@@ -13,18 +13,25 @@ module.exports = {
   type User {
     id: ID!
     name: String!
+    links: UserLinks
+    avatarUrl: String
+  }
+
+  type UserLinks {
+    twitter: String
+    website: String
   }
 `,
   resolvers: {
     Query: {
       users: (parent, args, context, info) => {
         return users;
-      },
+      }
     },
     Event: {
       users: (parent, args, context, info) => {
         return parent.userIds.map(id => users.find(x => x.id === id));
-      },
-    },
-  },
+      }
+    }
+  }
 };
