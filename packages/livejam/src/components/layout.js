@@ -1,20 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
-import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
-import IconButton from "@material-ui/core/IconButton";
-import Paper from "@material-ui/core/Paper";
-import { Twitter } from "mdi-material-ui";
 import { withStyles } from "@material-ui/core/styles";
 
+import TopBar from "./top-bar";
 import SpeakerCard from "./speaker-card";
 
 const Layout = ({ children, classes }) => (
@@ -46,27 +42,7 @@ const Layout = ({ children, classes }) => (
       return (
         <div className={classes.root}>
           <CssBaseline />
-          <AppBar position="sticky" className={classes.appBar}>
-            <Toolbar className={classes.layout}>
-              <Typography
-                variant="h6"
-                color="inherit"
-                noWrap
-                className={classes.title}
-              >
-                {site.siteMetadata.title}
-              </Typography>
-              <div className={classes.grow} />
-              <div>
-                <IconButton
-                  color="inherit"
-                  href="https://twitter.com/livejamio"
-                >
-                  <Twitter />
-                </IconButton>
-              </div>
-            </Toolbar>
-          </AppBar>
+          <TopBar title={site.siteMetadata.title} />
           <main className={classes.main}>{children}</main>
 
           <Divider />
@@ -129,15 +105,6 @@ const styles = theme => ({
   root: {
     minHeight: "100%",
     position: "relative"
-  },
-  appBar: {
-    backgroundColor: "black"
-  },
-  title: {
-    fontWeight: 700
-  },
-  grow: {
-    flexGrow: 1
   },
   layout: {
     width: "auto",
