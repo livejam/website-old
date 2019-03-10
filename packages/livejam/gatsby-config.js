@@ -45,10 +45,7 @@ module.exports = {
       resolve: `gatsby-plugin-material-ui`,
       options: {
         theme: {
-          palette: {
-            primary: { main: "#ec5331" },
-            secondary: { main: "#31caec" }
-          }
+          pathToTheme: "src/utils/theme.js"
         }
       }
     },

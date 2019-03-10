@@ -96,7 +96,7 @@ export const Hero = ({ classes }) => (
 
 const styles = theme => ({
   heroUnit: {
-    paddingBottom: theme.spacing.unit * 5
+    paddingBottom: theme.spacing.unit * 3
   },
   heroHeadline: {
     color: "white",

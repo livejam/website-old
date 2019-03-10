@@ -51,7 +51,7 @@ const Layout = ({ children, classes }) => (
               Yeah
             </Typography>
 
-            <Grid container spacing={24}>
+            <Grid container spacing={2}>
               <Grid item xs={12} md={8}>
                 <Card>
                   <CardHeader>foo</CardHeader>
