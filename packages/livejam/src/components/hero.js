@@ -95,7 +95,9 @@ export const Hero = ({ classes }) => (
 );
 
 const styles = theme => ({
-  heroUnit: {},
+  heroUnit: {
+    paddingBottom: theme.spacing.unit * 5
+  },
   heroHeadline: {
     color: "white",
     paddingTop: "5%"
@@ -104,11 +106,13 @@ const styles = theme => ({
     color: "white"
   },
   heroContent: {
-    maxWidth: 700,
+    [theme.breakpoints.up("sm")]: {
+      width: 700,
+      marginLeft: "auto",
+      marginRight: "auto"
+    },
     margin: "0 auto",
-    paddingTop: "84px",
-    paddingLeft: "20px",
-    paddingRight: "20px"
+    padding: theme.spacing.unit * 3
   },
   heroActions: {
     marginTop: "5%"
@@ -120,9 +124,6 @@ const styles = theme => ({
     opacity: 0.8,
     backgroundColor: "#000",
     color: "white"
-  },
-  backgroundImage: {
-    height: "66vh"
   }
 });
 
