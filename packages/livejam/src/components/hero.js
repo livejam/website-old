@@ -41,52 +41,55 @@ export const Hero = ({ classes }) => (
           className={classes.backgroundImage}
           fluid={data.desktop.childImageSharp.fluid}
         >
-          <div className={classes.heroUnit}>
-            <div className={classes.heroContent}>
-              <Typography
-                component="h1"
-                variant="h1"
-                align="center"
-                className={classes.heroHeadline}
-                gutterBottom
-              >
-                Hi people!
-              </Typography>
-              <Paper className={classes.paper} elevation={1}>
-                <Typography
-                  variant="h5"
-                  align="center"
-                  className={classes.heroSubHeadline}
-                  paragraph
-                >
-                  Join fellow tech makers for live jam session on Twitch,
-                  Youtube and other channels. Interact in real time, explore new
-                  topics and watch how others would troubleshoot a problem.
-                </Typography>
-                <div className={classes.heroActions}>
-                  <Grid container spacing={24} justify="center">
-                    <Grid item>
-                      <Typography
-                        variant="h4"
-                        align="center"
-                        className={classes.heroSubHeadline}
-                        paragraph
-                      >
-                        Next Session
-                      </Typography>
-                      <Button
-                        variant="outlined"
-                        color="secondary"
-                        size="large"
-                        href={nextEvent.streaming.link}
-                      >
-                        <PlayArrow className={classes.arrow} />
-                        {nextEvent.title}
-                      </Button>
+          <div className={classes.overlay}>
+            <div className={classes.heroUnit}>
+              <div className={classes.heroContent}>
+                <Paper className={classes.paper} elevation={1} rounded>
+                  <Typography
+                    component="h1"
+                    variant="h1"
+                    align="center"
+                    className={classes.heroHeadline}
+                    gutterBottom
+                  >
+                    Livejam.io
+                  </Typography>
+
+                  <Typography
+                    variant="h5"
+                    align="center"
+                    className={classes.heroSubHeadline}
+                    paragraph
+                  >
+                    Join fellow tech makers for live jam sessions on Twitch,
+                    Youtube and other channels. Interact in real time, explore
+                    new topics and help each other building fun stuff.
+                  </Typography>
+                  <div className={classes.heroActions}>
+                    <Grid container spacing={24} justify="center">
+                      <Grid item>
+                        <Typography
+                          variant="h4"
+                          align="center"
+                          className={classes.heroSubHeadline}
+                          paragraph
+                        >
+                          Next Session
+                        </Typography>
+                        <Button
+                          variant="outlined"
+                          color="secondary"
+                          size="large"
+                          href={nextEvent.streaming.link}
+                        >
+                          <PlayArrow className={classes.arrow} />
+                          {nextEvent.title}
+                        </Button>
+                      </Grid>
                     </Grid>
-                  </Grid>
-                </div>
-              </Paper>
+                  </div>
+                </Paper>
+              </div>
             </div>
           </div>
         </BackgroundImage>
@@ -97,7 +100,11 @@ export const Hero = ({ classes }) => (
 
 const styles = theme => ({
   heroUnit: {
-    paddingBottom: theme.spacing.unit * 3
+    paddingBottom: theme.spacing.unit * 3,
+    [theme.breakpoints.up("sm")]: {
+      minHeight: 700,
+      paddingTop: theme.spacing(10)
+    }
   },
   arrow: {
     marginRight: theme.spacing.unit * 1
@@ -125,9 +132,13 @@ const styles = theme => ({
     ...theme.mixins.gutters(),
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
-    opacity: 0.8,
-    backgroundColor: "#000",
+    background: "rgba(0, 0, 0, 0.7)",
     color: "white"
+  },
+  overlay: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(0, 0, 0, 0.25);"
   }
 });
 
