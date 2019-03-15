@@ -47,7 +47,7 @@ export const Hero = ({ classes }) => (
                 <Paper className={classes.paper} elevation={1} rounded>
                   <Typography
                     component="h1"
-                    variant="h1"
+                    variant="h2"
                     align="center"
                     className={classes.heroHeadline}
                     gutterBottom
