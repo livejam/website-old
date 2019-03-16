@@ -382,7 +382,8 @@ const Privacy = ({ classes }) => (
           Sie können die Erfassung Ihrer Daten durch Google Analytics
           verhindern, indem Sie auf folgenden Link klicken. Es wird ein
           Opt-Out-Cookie gesetzt, der die Erfassung Ihrer Daten bei zukünftigen
-          Besuchen dieser Website verhindert: Google Analytics deaktivieren.
+          Besuchen dieser Website verhindert:{" "}
+          <a href="javascript:gaOptout();">Google Analytics deaktivieren.</a>
         </Typography>
         <Typography paragraph>
           Mehr Informationen zum Umgang mit Nutzerdaten bei Google Analytics
