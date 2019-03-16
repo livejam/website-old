@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import PlayCircleOutline from "@material-ui/icons/PlayCircleOutline";
 import Countdown from "react-countdown-now";
 import moment from "moment";
+import { OutboundLink } from "gatsby-plugin-google-analytics";
 
 import { withStyles } from "@material-ui/core/styles";
 export const Hero = ({ classes }) => (
@@ -83,6 +84,7 @@ export const Hero = ({ classes }) => (
                           variant="contained"
                           color="primary"
                           size="large"
+                          component={OutboundLink}
                           href={nextEvent.streaming.link}
                         >
                           <PlayCircleOutline className={classes.arrow} />

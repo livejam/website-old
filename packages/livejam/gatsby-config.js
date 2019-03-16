@@ -55,6 +55,15 @@ module.exports = {
         hostname: "www.livejam.io",
         params: {}
       }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-136298216-1",
+        anonymize: true,
+        respectDNT: true,
+        cookieDomain: "livejam.io"
+      }
     }
   ]
 };
