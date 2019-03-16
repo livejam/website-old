@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `LiveJam.io`,
+    title: `Livejam.io`,
     description: `Join fellow tech makers for live jam session on Twitch, Youtube and other channels. Interact in real time, explore new topics and watch how others would troubleshoot a problem..`,
     author: `Mike und Sebastian`
   },
@@ -44,17 +44,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-material-ui`,
       options: {
-        theme: {
-          pathToTheme: "src/utils/theme.js"
-        }
-      }
-    },
-    {
-      resolve: "gatsby-plugin-web-font-loader",
-      options: {
-        google: {
-          families: ["Roboto:300,400,500,700", "Material+Icons"]
-        }
+        pathToTheme: "src/utils/theme.js"
       }
     },
     {

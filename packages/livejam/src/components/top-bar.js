@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -11,7 +12,7 @@ const TopBar = ({ title, classes }) => (
   <AppBar position="sticky" className={classes.appBar}>
     <Toolbar className={classes.layout}>
       <Typography variant="h6" color="inherit" noWrap className={classes.title}>
-        {title}
+        <Link to="/">{title}</Link>
       </Typography>
       <div className={classes.grow} />
       <div>
@@ -29,19 +30,23 @@ TopBar.propTypes = {
 
 const styles = theme => ({
   appBar: {
-    backgroundColor: "black"
+    backgroundColor: theme.palette.primary
   },
   title: {
-    fontWeight: 700
+    fontWeight: 700,
+    "& a": {
+      textDecoration: "none",
+      color: "#FFF"
+    }
   },
   grow: {
     flexGrow: 1
   },
   layout: {
     width: "auto",
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(1400 + theme.spacing.unit * 3 * 2)]: {
+    marginLeft: theme.spacing(3),
+    marginRight: theme.spacing(3),
+    [theme.breakpoints.up(1400 + theme.spacing(3) * 2)]: {
       width: 1400,
       marginLeft: "auto",
       marginRight: "auto"

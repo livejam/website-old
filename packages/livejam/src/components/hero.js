@@ -5,7 +5,10 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
-import PlayArrow from "@material-ui/icons/PlayArrow";
+import PlayCircleOutline from "@material-ui/icons/PlayCircleOutline";
+import Countdown from "react-countdown-now";
+import moment from "moment";
+
 import { withStyles } from "@material-ui/core/styles";
 export const Hero = ({ classes }) => (
   <StaticQuery
@@ -34,7 +37,7 @@ export const Hero = ({ classes }) => (
       }
     `}
     render={data => {
-      const nextEvent = (data && data.events && data.events.shift()) || {};
+      const [nextEvent = {}] = data.events;
       return (
         <BackgroundImage
           Tag="section"
@@ -44,7 +47,7 @@ export const Hero = ({ classes }) => (
           <div className={classes.overlay}>
             <div className={classes.heroUnit}>
               <div className={classes.heroContent}>
-                <Paper className={classes.paper} elevation={1} rounded>
+                <Paper className={classes.paper} elevation={1}>
                   <Typography
                     component="h1"
                     variant="h2"
@@ -61,12 +64,12 @@ export const Hero = ({ classes }) => (
                     className={classes.heroSubHeadline}
                     paragraph
                   >
-                    Join fellow tech makers for live jam sessions on Twitch,
+                    Join fellow tech makers for #livejam sessions on Twitch,
                     Youtube and other channels. Interact in real time, explore
                     new topics and help each other building fun stuff.
                   </Typography>
                   <div className={classes.heroActions}>
-                    <Grid container spacing={24} justify="center">
+                    <Grid container justify="center">
                       <Grid item>
                         <Typography
                           variant="h4"
@@ -74,17 +77,26 @@ export const Hero = ({ classes }) => (
                           className={classes.heroSubHeadline}
                           paragraph
                         >
-                          Next Session
+                          Next Live Session
                         </Typography>
                         <Button
-                          variant="outlined"
-                          color="secondary"
+                          variant="contained"
+                          color="primary"
                           size="large"
                           href={nextEvent.streaming.link}
                         >
-                          <PlayArrow className={classes.arrow} />
+                          <PlayCircleOutline className={classes.arrow} />
                           {nextEvent.title}
                         </Button>
+                        <div className={classes.countdown}>
+                          in
+                          <Countdown
+                            date={moment(nextEvent.startsAt).valueOf()}
+                            daysInHours={true}
+                          >
+                            <span>Now live on Air!</span>
+                          </Countdown>
+                        </div>
                       </Grid>
                     </Grid>
                   </div>
@@ -100,14 +112,14 @@ export const Hero = ({ classes }) => (
 
 const styles = theme => ({
   heroUnit: {
-    paddingBottom: theme.spacing.unit * 3,
+    paddingBottom: theme.spacing(3),
     [theme.breakpoints.up("sm")]: {
       minHeight: 700,
       paddingTop: theme.spacing(10)
     }
   },
   arrow: {
-    marginRight: theme.spacing.unit * 1
+    marginRight: theme.spacing(1)
   },
   heroHeadline: {
     color: "white",
@@ -123,22 +135,33 @@ const styles = theme => ({
       marginRight: "auto"
     },
     margin: "0 auto",
-    padding: theme.spacing.unit * 3
+    padding: theme.spacing(3)
   },
   heroActions: {
     marginTop: "5%"
   },
+  backgroundImage: {
+    marginTop: theme.spacing(2) * -1
+  },
   paper: {
     ...theme.mixins.gutters(),
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
-    background: "rgba(0, 0, 0, 0.7)",
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(8),
+    background: "rgba(0, 0, 0, 0.5)",
     color: "white"
   },
   overlay: {
     width: "100%",
     height: "100%",
     backgroundColor: "rgba(0, 0, 0, 0.25);"
+  },
+  countdown: {
+    margin: theme.spacing(1),
+    textAlign: "center",
+    fontSize: "1.25rem",
+    "& span": {
+      marginLeft: theme.spacing(1)
+    }
   }
 });
 
