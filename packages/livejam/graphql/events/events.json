@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "title": "AWS CDK with GatsbyJS",
-    "description": "Join Mike and Sebastian live-jamming building Livejam.io.",
-    "startsAt": "2019-03-10T19:00:00.000Z",
+    "title": "Building Livejam.io - 5th Iteration",
+    "description": "Join Mike and Sebastian's #livejam building Livejam.io with GatsbyJS and the AWS Cloud Development Kit. This time, we'll build the actual event pages.",
+    "startsAt": "2019-03-17T19:00:00.000Z",
     "language": "DE",
     "tags": ["gatsbyjs", "aws", "cloud development kit"],
     "streaming": {
@@ -15,14 +15,15 @@
       "link": "https://zoom.us/j/424372305",
       "audience": "everyone"
     },
-    "userIds": [1, 2]
+    "userIds": [1, 2],
+    "isFeatured": true
   },
   {
     "id": 2,
     "title": "Health Tech - Let's talk about FHIR",
     "description": "FHIR? Tune in when Andreas and Sebastian are going to explore the Ruby Gem to interface with FIHR, an universal standard for data exchange for health data. We're probably going to build a little thing or so.",
     "language": "DE",
-    "startsAt": "2019-03-15T19:00:00.000Z",
+    "startsAt": "2019-03-18T19:00:00.000Z",
     "tags": ["ruby", "fihr", "health tech"],
     "streaming": {
       "platform": "TWITCH",
@@ -33,6 +34,7 @@
       "link": "https://zoom.us/j/424372305",
       "audience": "everyone"
     },
-    "userIds": [2, 3]
+    "userIds": [2, 3],
+    "isFeatured": false
   }
 ]

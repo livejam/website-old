@@ -15,6 +15,7 @@ module.exports = {
     tags: [String]
     streaming: EventStreaming!
     collaboration: EventCollaboration
+    isFeatured: Boolean
   }
 
   enum LanguageCode {

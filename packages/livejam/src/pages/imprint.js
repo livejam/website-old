@@ -3,9 +3,11 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import Layout from "../components/layout";
+import SEO from "../components/seo";
 
 const Imprint = ({ classes }) => (
   <Layout>
+    <SEO title="Imprint" keywords={[`live`, `jam`, `sessions`]} />
     <Grid container justify="center" alignItems="center">
       <Grid item xs={9} className={classes.text}>
         <Typography variant="h2">Impressum</Typography>

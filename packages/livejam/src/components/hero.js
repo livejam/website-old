@@ -6,6 +6,9 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import PlayCircleOutline from "@material-ui/icons/PlayCircleOutline";
+import Countdown from "react-countdown-now";
+import moment from "moment";
+
 import { withStyles } from "@material-ui/core/styles";
 export const Hero = ({ classes }) => (
   <StaticQuery
@@ -44,7 +47,7 @@ export const Hero = ({ classes }) => (
           <div className={classes.overlay}>
             <div className={classes.heroUnit}>
               <div className={classes.heroContent}>
-                <Paper className={classes.paper} elevation={1} rounded>
+                <Paper className={classes.paper} elevation={1}>
                   <Typography
                     component="h1"
                     variant="h2"
@@ -66,7 +69,7 @@ export const Hero = ({ classes }) => (
                     new topics and help each other building fun stuff.
                   </Typography>
                   <div className={classes.heroActions}>
-                    <Grid container spacing={24} justify="center">
+                    <Grid container justify="center">
                       <Grid item>
                         <Typography
                           variant="h4"
@@ -74,7 +77,7 @@ export const Hero = ({ classes }) => (
                           className={classes.heroSubHeadline}
                           paragraph
                         >
-                          Next Session
+                          Next Live Session
                         </Typography>
                         <Button
                           variant="contained"
@@ -85,6 +88,15 @@ export const Hero = ({ classes }) => (
                           <PlayCircleOutline className={classes.arrow} />
                           {nextEvent.title}
                         </Button>
+                        <div className={classes.countdown}>
+                          in
+                          <Countdown
+                            date={moment(nextEvent.startsAt).valueOf()}
+                            daysInHours={true}
+                          >
+                            <span>Now live on Air!</span>
+                          </Countdown>
+                        </div>
                       </Grid>
                     </Grid>
                   </div>
@@ -100,14 +112,14 @@ export const Hero = ({ classes }) => (
 
 const styles = theme => ({
   heroUnit: {
-    paddingBottom: theme.spacing.unit * 3,
+    paddingBottom: theme.spacing(3),
     [theme.breakpoints.up("sm")]: {
       minHeight: 700,
       paddingTop: theme.spacing(10)
     }
   },
   arrow: {
-    marginRight: theme.spacing.unit * 1
+    marginRight: theme.spacing(1)
   },
   heroHeadline: {
     color: "white",
@@ -142,6 +154,14 @@ const styles = theme => ({
     width: "100%",
     height: "100%",
     backgroundColor: "rgba(0, 0, 0, 0.25);"
+  },
+  countdown: {
+    margin: theme.spacing(1),
+    textAlign: "center",
+    fontSize: "1.25rem",
+    "& span": {
+      marginLeft: theme.spacing(1)
+    }
   }
 });
 

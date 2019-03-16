@@ -5,7 +5,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import { Twitter, Opacity } from "mdi-material-ui";
+import { Twitter } from "mdi-material-ui";
 import { withStyles } from "@material-ui/core/styles";
 
 const TopBar = ({ title, classes }) => (
@@ -44,9 +44,9 @@ const styles = theme => ({
   },
   layout: {
     width: "auto",
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(1400 + theme.spacing.unit * 3 * 2)]: {
+    marginLeft: theme.spacing(3),
+    marginRight: theme.spacing(3),
+    [theme.breakpoints.up(1400 + theme.spacing(3) * 2)]: {
       width: 1400,
       marginLeft: "auto",
       marginRight: "auto"

@@ -4,7 +4,6 @@ import { Link, StaticQuery, graphql } from "gatsby";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
-import grey from "@material-ui/core/colors/grey";
 import TopBar from "./top-bar";
 import "typeface-roboto";
 
