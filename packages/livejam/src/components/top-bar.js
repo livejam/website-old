@@ -5,7 +5,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import { Twitter } from "mdi-material-ui";
+import { Twitter, Opacity } from "mdi-material-ui";
 import { withStyles } from "@material-ui/core/styles";
 
 const TopBar = ({ title, classes }) => (
@@ -30,7 +30,8 @@ TopBar.propTypes = {
 
 const styles = theme => ({
   appBar: {
-    backgroundColor: "black"
+    backgroundColor: theme.palette.primary,
+    opacity: 0.95
   },
   title: {
     fontWeight: 700,

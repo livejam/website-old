@@ -13,7 +13,7 @@ module.exports = {
     language: LanguageCode!
     startsAt: String
     tags: [String]
-    streaming: EventStreaming
+    streaming: EventStreaming!
     collaboration: EventCollaboration
   }
 
@@ -64,13 +64,17 @@ module.exports = {
   resolvers: {
     Query: {
       events: (parent, args, context, info) => {
-        return events;
+        return deepCopy(events);
       }
     },
     User: {
       events: (parent, args, context, info) => {
-        return events.filter(x => x.userIds.includes(parent.id));
+        return deepCopy(events).filter(x => x.userIds.includes(parent.id));
       }
     }
   }
 };
+
+function deepCopy(input) {
+  return JSON.parse(JSON.stringify(input));
+}

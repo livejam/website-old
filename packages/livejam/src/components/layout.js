@@ -53,9 +53,8 @@ const styles = theme => ({
   },
   footer: {
     color: "#FFF",
-    backgroundColor: grey[600],
-    marginTop: theme.spacing(6),
-    padding: theme.spacing(2),
+    backgroundColor: theme.palette.primary.dark,
+    padding: theme.spacing(6),
     position: "static",
     bottom: 0,
     width: "100%",

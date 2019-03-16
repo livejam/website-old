@@ -17,6 +17,8 @@ import ShareIcon from "@material-ui/icons/Share";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Hero from "../components/hero";
+import Features from "../components/features";
+import grey from "@material-ui/core/colors/grey";
 
 const Index = ({ classes, data }) => (
   <StaticQuery
@@ -51,7 +53,7 @@ const Index = ({ classes, data }) => (
           <SEO title="Home" keywords={[`live`, `jam`, `sessions`]} />
           <Hero />
 
-          <div className={classes.layout}>
+          <div className={classes.featuredSection}>
             <Grid
               container
               justify="center"
@@ -128,9 +130,7 @@ const styles = theme => ({
   actions: {
     display: "flex"
   },
-  featuredContainer: {
-    marginTop: theme.spacing(7)
-  },
+  featuredContainer: {},
 
   avatar: {
     margin: 10,
@@ -147,15 +147,13 @@ const styles = theme => ({
     height: 0,
     paddingTop: "56.25%" // 16:9
   },
-  layout: {
+  featuredSection: {
     width: "auto",
-    marginLeft: theme.spacing(3),
-    marginRight: theme.spacing(3),
-    [theme.breakpoints.up(1400 + theme.spacing(6))]: {
-      width: 1400,
-      marginLeft: "auto",
-      marginRight: "auto"
-    }
+    marginLeft: "auto",
+    marginRight: "auto",
+    backgroundColor: grey[300],
+    paddingTop: theme.spacing(7),
+    paddingBottom: theme.spacing(7)
   }
 });
 

@@ -44,9 +44,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-material-ui`,
       options: {
-        theme: {
-          pathToTheme: "src/utils/theme.js"
-        }
+        pathToTheme: "src/utils/theme.js"
       }
     },
     {

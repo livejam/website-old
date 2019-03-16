@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
-import PlayArrow from "@material-ui/icons/PlayArrow";
+import PlayCircleOutline from "@material-ui/icons/PlayCircleOutline";
 import { withStyles } from "@material-ui/core/styles";
 export const Hero = ({ classes }) => (
   <StaticQuery
@@ -34,7 +34,7 @@ export const Hero = ({ classes }) => (
       }
     `}
     render={data => {
-      const nextEvent = (data && data.events && data.events.shift()) || {};
+      const [nextEvent = {}] = data.events;
       return (
         <BackgroundImage
           Tag="section"
@@ -77,12 +77,12 @@ export const Hero = ({ classes }) => (
                           Next Session
                         </Typography>
                         <Button
-                          variant="outlined"
-                          color="secondary"
+                          variant="contained"
+                          color="primary"
                           size="large"
                           href={nextEvent.streaming.link}
                         >
-                          <PlayArrow className={classes.arrow} />
+                          <PlayCircleOutline className={classes.arrow} />
                           {nextEvent.title}
                         </Button>
                       </Grid>
@@ -123,7 +123,7 @@ const styles = theme => ({
       marginRight: "auto"
     },
     margin: "0 auto",
-    padding: theme.spacing.unit * 3
+    padding: theme.spacing(3)
   },
   heroActions: {
     marginTop: "5%"
@@ -133,9 +133,9 @@ const styles = theme => ({
   },
   paper: {
     ...theme.mixins.gutters(),
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
-    background: "rgba(0, 0, 0, 0.7)",
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(8),
+    background: "rgba(0, 0, 0, 0.5)",
     color: "white"
   },
   overlay: {
