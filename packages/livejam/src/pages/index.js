@@ -60,7 +60,7 @@ const Index = ({ classes, data }) => (
               spacing={2}
               className={classes.featuredContainer}
             >
-              <Grid item xs={12} md={8}>
+              <Grid item xs={12} md={6}>
                 <Card>
                   <CardHeader
                     title="Building Livejam.io - 5th Iteration"
