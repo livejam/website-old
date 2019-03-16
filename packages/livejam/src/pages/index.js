@@ -99,7 +99,7 @@ const Index = ({ classes, data }) => (
                           variant="subtitle1"
                           className={classes.connectorText}
                         >
-                          Join Mike and Sebastian's live jam session building
+                          Join Mike and Sebastian's #livejam session building
                           Livejam.io.
                         </Typography>
                       </Grid>

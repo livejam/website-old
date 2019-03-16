@@ -61,7 +61,7 @@ export const Hero = ({ classes }) => (
                     className={classes.heroSubHeadline}
                     paragraph
                   >
-                    Join fellow tech makers for live jam sessions on Twitch,
+                    Join fellow tech makers for #livejam sessions on Twitch,
                     Youtube and other channels. Interact in real time, explore
                     new topics and help each other building fun stuff.
                   </Typography>
