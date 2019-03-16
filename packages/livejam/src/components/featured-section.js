@@ -67,7 +67,7 @@ const FeaturedSection = ({ classes }) => (
             spacing={2}
             className={classes.featuredContainer}
           >
-            <Grid item xs={12} md={6}>
+            <Grid item xs={10} md={8} lg={6}>
               <Card>
                 <CardHeader
                   title={nextEvent.title}
