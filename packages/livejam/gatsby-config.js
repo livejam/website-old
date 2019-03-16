@@ -50,14 +50,6 @@ module.exports = {
       }
     },
     {
-      resolve: "gatsby-plugin-web-font-loader",
-      options: {
-        google: {
-          families: ["Roboto:300,400,500,700", "Material+Icons"]
-        }
-      }
-    },
-    {
       resolve: `gatsby-plugin-s3`,
       options: {
         bucketName: process.env.BucketName || "stub-for-gatsby-build",

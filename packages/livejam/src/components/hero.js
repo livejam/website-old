@@ -128,6 +128,9 @@ const styles = theme => ({
   heroActions: {
     marginTop: "5%"
   },
+  backgroundImage: {
+    marginTop: theme.spacing(2) * -1
+  },
   paper: {
     ...theme.mixins.gutters(),
     paddingTop: theme.spacing.unit * 2,

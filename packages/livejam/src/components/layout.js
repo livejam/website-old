@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import grey from "@material-ui/core/colors/grey";
 import TopBar from "./top-bar";
+import "typeface-roboto";
 
 const Layout = ({ children, classes }) => (
   <StaticQuery
