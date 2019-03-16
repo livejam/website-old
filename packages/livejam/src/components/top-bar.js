@@ -30,8 +30,7 @@ TopBar.propTypes = {
 
 const styles = theme => ({
   appBar: {
-    backgroundColor: theme.palette.primary,
-    opacity: 0.95
+    backgroundColor: theme.palette.primary
   },
   title: {
     fontWeight: 700,
