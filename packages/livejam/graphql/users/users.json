@@ -5,7 +5,7 @@
     "links": {
       "twitter": "https://twitter.com/mikebild"
     },
-    "avatarUrl": "mikebild.jpg"
+    "avatarImage": "mikebild.jpg"
   },
   {
     "id": 2,
@@ -14,7 +14,7 @@
       "twitter": "https://twitter.com/skorfmann",
       "website": "https://skorfmann.com"
     },
-    "avatarUrl": "skorfmann.jpg"
+    "avatarImage": "sebastiankorfmann.jpg"
   },
   {
     "id": 3,
@@ -22,6 +22,6 @@
     "links": {
       "twitter": "https://twitter.com/aheumaier"
     },
-    "avatarUrl": "aheumaier.jpg"
+    "avatarImage": "aheumaier.jpg"
   }
 ]

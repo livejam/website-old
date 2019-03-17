@@ -4,12 +4,14 @@ module.exports = {
   typeDefs: `
   type Query {
     events: [Event]
+    nextEvent: Event
   }
 
   type Event {
     id: ID!
     title: String!
     description: String
+    coverImage: String
     language: LanguageCode!
     startsAt: String
     tags: [String]

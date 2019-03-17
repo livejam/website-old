@@ -6,6 +6,7 @@
     "startsAt": "2019-03-17T19:00:00.000Z",
     "language": "DE",
     "tags": ["gatsbyjs", "aws", "cloud development kit"],
+    "coverImage": "livejam.png",
     "streaming": {
       "platform": "TWITCH",
       "link": "https://twitch.tv/skorfmann"
@@ -15,7 +16,7 @@
       "link": "https://zoom.us/j/424372305",
       "audience": "everyone"
     },
-    "userIds": [1, 2],
+    "userIds": [2, 1],
     "isFeatured": true
   },
   {
@@ -25,6 +26,7 @@
     "language": "DE",
     "startsAt": "2019-03-18T19:00:00.000Z",
     "tags": ["ruby", "fihr", "health tech"],
+    "coverImage": "livejam.png",
     "streaming": {
       "platform": "TWITCH",
       "link": "https://twitch.tv/skorfmann"

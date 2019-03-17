@@ -41,6 +41,7 @@
     "react-countdown-now": "^2.1.0",
     "react-dom": "^16.8.3",
     "react-helmet": "^5.2.0",
+    "slugify": "^1.3.4",
     "typeface-roboto": "^0.0.54",
     "typescript": "^3.3.3333"
   },
@@ -49,7 +50,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "set -a ; source stack.env && gatsby build",
+    "build": "gatsby build",
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
@@ -69,5 +70,8 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "dependencies": {
+    "github-slugger": "^1.2.1"
   }
 }

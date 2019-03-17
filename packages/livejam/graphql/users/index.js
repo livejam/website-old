@@ -14,7 +14,7 @@ module.exports = {
     id: ID!
     name: String!
     links: UserLinks
-    avatarUrl: String
+    avatarImage: String
   }
 
   type UserLinks {
