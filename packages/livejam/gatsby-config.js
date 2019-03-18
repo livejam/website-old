@@ -64,6 +64,27 @@ module.exports = {
         respectDNT: true,
         cookieDomain: "livejam.io"
       }
+    },
+    {
+      resolve: `gatsby-source-airtable`,
+      options: {
+        tables: [
+          {
+            baseId: `app70GFbs34dmJXoh`,
+            tableName: `JamSessions`,
+            tableView: `Grid view`,
+            mapping: { CoverImage: `fileNode`, Avatar: `fileNode` },
+            tableLinks: [`Hosts`]
+          },
+          {
+            baseId: `app70GFbs34dmJXoh`,
+            tableName: `Hosts`,
+            tableView: `Grid view`,
+            mapping: { Avatar: `fileNode` },
+            tableLinks: [`JamSessions`]
+          }
+        ]
+      }
     }
   ]
 };

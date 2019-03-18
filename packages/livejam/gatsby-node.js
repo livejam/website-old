@@ -1,104 +1,54 @@
-const { join } = require("path");
+const { resolve, join } = require("path");
 const GitHubSlugger = require("github-slugger");
+const slugger = new GitHubSlugger();
+
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions;
+
+  if (node.internal.type === `Airtable` && node.table === `JamSessions`) {
+    createNodeField({
+      node,
+      name: `slug`,
+      value: join("sessions", slugger.slug(node.data.Name))
+    });
+  }
+};
 
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
-  const slugger = new GitHubSlugger();
-  const {
-    data: { events }
-  } = await graphql(`
-    query EventsAll {
-      events {
-        id
-        title
-        coverImage
-        streaming {
-          platform
-          link
-        }
-        description
-        startsAt
-        users {
-          name
-          avatarImage
+  const jamSession = resolve(`src/templates/jam-session.js`);
+
+  const result = await graphql(`
+    query allJamSessions {
+      allAirtable(filter: { table: { eq: "JamSessions" } }) {
+        edges {
+          node {
+            id
+            data {
+              ID
+            }
+            fields {
+              slug
+            }
+          }
         }
       }
     }
   `);
 
-  events.forEach(async event => {
-    const {
-      data: { coverImage }
-    } = await graphql(
-      `
-      fragment GatsbyImageSharpFluid on ImageSharpFluid {
-        base64
-        aspectRatio
-        src
-        srcSet
-        sizes
-      }
-
-      query LivejamCoverImageQuery {
-        coverImage: file(relativePath: { eq: "` +
-        event.coverImage +
-        `" }) {
-          childImageSharp {
-            fluid(quality: 100, maxWidth: 1000) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }        
-      }
-    `
-    );
-
-    const avatarImages = event.users.map(user => {
-      return graphql(
-        `
-        fragment GatsbyImageSharpFluid on ImageSharpFluid {
-          base64
-          aspectRatio
-          src
-          srcSet
-          sizes
-        }
-  
-        query LivejamAvatarImageQuery {
-          avatarImage: file(relativePath: { eq: "` +
-          user.avatarImage +
-          `" }) {
-            name
-            extension
-            childImageSharp {
-              fluid(quality: 100, maxWidth: 1000) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }        
-        }
-      `
-      );
+  if (result.errors) {
+    result.errors.forEach(error => {
+      console.log(error);
     });
 
-    const allUsers = await Promise.all(avatarImages);
+    throw new Error();
+  }
 
-    const path = `events/${slugger.slug(event.title)}`;
-    const component = join(__dirname, "src/components/jam.js");
-
+  result.data.allAirtable.edges.forEach(edge => {
     createPage({
-      path,
-      component,
+      path: edge.node.fields.slug, // required, we don't have frontmatter for this page hence separate if()
+      component: jamSession,
       context: {
-        event,
-        coverImage,
-        hosts: allUsers.map(u => ({
-          name: event.users.find(
-            x =>
-              x.avatarImage ===
-              u.data.avatarImage.name + "." + u.data.avatarImage.extension
-          ).name,
-          avatarImage: u.data.avatarImage
-        }))
+        id: edge.node.data.ID
       }
     });
   });
